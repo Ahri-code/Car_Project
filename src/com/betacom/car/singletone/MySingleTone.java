@@ -10,14 +10,13 @@ public class MySingleTone {
 	private static MySingleTone instance = null;
 	
 	private List<Veicolo> listV = new ArrayList<Veicolo>();
-	private final String[] tipoMacchina = {"Fouristada", "City", "Sportiva", "Utilitaria"}; 
-	private final String[] tipoMoto = {"Strada", "Cross", "Trial", "Scooter"}; 
-	
-	
-	private  Integer id = 0; 
-	
-	private MySingleTone() {
-	}
+	private static String tipoMacchina = "Fouristada, City, Sportiva, Utilitaria";
+	private static String tipoMoto = "Strada, Cross, Trial, Scooter";
+	private static String[] typeM = tipoMacchina.split(",\\ ");
+	private static String[] typeMo = tipoMoto.split(",\\ ");
+
+
+	private  Integer id = 0;
 	
 	public static MySingleTone getInstance() {
 		if (instance == null) {
@@ -35,10 +34,10 @@ public class MySingleTone {
 	public boolean controlTipoMacchina(String tipoVehicolo,String tipo) {
 		boolean rc = false;
 		if ("Macchina".equalsIgnoreCase(tipoVehicolo)) {
-			rc = searchValue(tipoMacchina, tipo);
+			rc = searchValue(typeM, tipo);
 		}
 		if ("Moto".equalsIgnoreCase(tipoVehicolo)) {
-			rc = searchValue(tipoMoto, tipo);
+			rc = searchValue(typeMo, tipo);
 		}
 		
 		return rc;
